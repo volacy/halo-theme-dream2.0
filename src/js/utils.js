@@ -109,6 +109,7 @@ const Utils = {
     timeout = 10000,
     returnRaw = false,
     contentType,
+    dataType = 'json'
   }) {
     return new Promise((resolve, reject) => {
       method = method.toUpperCase()
@@ -120,7 +121,7 @@ const Utils = {
           ...headers,
         },
         async: true,
-        dataType: 'json',
+        dataType: dataType,
         contentType,
         timeout,
         data,
@@ -176,9 +177,11 @@ const Utils = {
         url: '/apis/api.halo.run/v1alpha1/trackers/upvote',
         method: 'POST',
         contentType: 'application/json;charset=UTF-8',
+        dataType: 'text',
+        returnRaw: true,
         data: JSON.stringify({
-          group: 'moment.halo.run',
-          plural: 'moments',
+          group: 'content.halo.run',
+          plural: 'posts',
           name: id
         })
       })
